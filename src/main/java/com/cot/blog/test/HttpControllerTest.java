@@ -13,12 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 // 사용자가 요청 > 응답(Data)
 @RestController
 public class HttpControllerTest {
+	
+	private static final String TAG = "HttpControllerTest: ";
 
+	
+	@GetMapping("/http/lombok")
+	public String lombokTest() {
+		Member m = Member.builder().username("asd").password("1234").email("asd@aaa.com").build();  //new Member(1, "aa", "1234", "a@a.com");
+		System.out.println(TAG+"getter: "+m.getUsername());
+		m.setUsername("dsa");
+		System.out.println(TAG+"setter: "+m.getUsername());
+		return "lombok test 완료";
+	}
+	
 	// http://localhost:8080/http/get // get?id=1&username=aa
 	@GetMapping("/http/get")
 	// Member m으로 한번에 받기
-	public String getTest(Member m) { // 각각 받는 방식 > @RequestParam int id, @RequestParam String username
-										// //MessageConverter (스프링부트)
+	public String getTest(Member m) { // 각각 받는 방식 > @RequestParam int id, @RequestParam String username > MessageConverter (스프링부트)
 		return "get 요청 : " + m.getId() + "/ " + m.getUsername() + "/ " + m.getPassword();
 	}
 

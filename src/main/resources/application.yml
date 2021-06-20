@@ -1,12 +1,42 @@
 
+# 규칙 스페이스 두칸으로 구분 :뒤에는 스페이스 하나
+
+
+server:
+  port: 8000
+  servlet:
+    context-path: /blog
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# 디비 연결
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
     username: cos
     password: cos1234
-    
+  
+# jsp 경로를 단축
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create # create 최초에만 이렇게 하고 그다음에는 update로 변경
+      naming:
+      # 테이블 생성시 변수명 그대로 필드 생성
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false # false 를 둠으로써 JPA 넘버링 방식을 따르지 않음
+    show-sql: true # sql 생성로그 출력
+    properties:
+      hibernate.format_sql: true # sql 생성로그 이쁘게 정렬
 
-  devtools:
-     restart:
-       enabled: true   
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
