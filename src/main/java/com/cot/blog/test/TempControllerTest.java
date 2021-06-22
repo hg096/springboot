@@ -20,9 +20,9 @@ public class TempControllerTest {
 //		prefix : /WEB-INF/views/
 //		suffix : .jsp
 //		풀네임 : /WEB-INF/views/test.jsp
-		
-		
 		return "test";
 	}
+	
+	
 
 }

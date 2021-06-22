@@ -33,7 +33,7 @@ public class Reply {
 	private String content; // 섬머노트 라이브러이 <html>태그가 섞여 디자인
 	
 	@ManyToOne
-	@JoinColumn(name="boardId") // boardId는 만들 칼럼이름, PK키를 따라감
+	@JoinColumn(name="boardId") // boardId는 만들 칼럼이름,y PK키를 따라감
 	private Board board;
 	
 	@ManyToOne

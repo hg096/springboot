@@ -28,7 +28,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create # create 최초에만 이렇게 하고 그다음에는 update로 변경
+      ddl-auto: update # create 최초에만 이렇게 하고 그다음에는 update로 변경 
       naming:
       # 테이블 생성시 변수명 그대로 필드 생성
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
