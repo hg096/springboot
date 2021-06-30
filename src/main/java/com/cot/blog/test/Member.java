@@ -1,20 +1,17 @@
 package com.cot.blog.test;
 
-
 // 방식2
 /*import lombok.Getter;
 import lombok.Setter;*/
 
 /*@Getter
-@Setter*/ 
+@Setter*/
 // 방식2 끝
-
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
 
 // 방식3
 @Data
@@ -29,8 +26,7 @@ public class Member {
 	private String username;
 	private String password;
 	private String email;
-	
-	
+
 	@Builder // 이방식을 사용하게되면 순서를 지키지 않고 값을 지정하고 모두를 지정할 필요없이 자유롭게 지정가능
 	public Member(int id, String username, String password, String email) {
 		this.id = id;
@@ -38,8 +34,7 @@ public class Member {
 		this.password = password;
 		this.email = email;
 	}
-	
-	
+
 	// 방식1
 	/*
 	 * public Member(int id, String username, String password, String email) {
@@ -52,7 +47,4 @@ public class Member {
 	 * void setEmail(String email) { this.email = email; }
 	 */
 
-	
-	
-	
 }

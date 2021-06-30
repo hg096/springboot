@@ -19,7 +19,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,22 +27,22 @@ import lombok.NoArgsConstructor;
 public class Board {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //자동증가
-	private int id; 
-	
-	@Column(nullable=false, length= 100)
-	private String title; 
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // 자동증가
+	private int id;
+
+	@Column(nullable = false, length = 100)
+	private String title;
+
 	@Lob // 대용량 데이터
 	private String content; // 섬머노트 라이브러이 <html>태그가 섞여 디자인
-	
+
 	@ColumnDefault("0")
-	private int count; //조회수
-	
-	@ManyToOne //Many=Board, User=one
-	@JoinColumn(name="userId") // userId는 만들 칼럼이름, PK키를 따라감
+	private int count; // 조회수
+
+	@ManyToOne // Many=Board, User=one
+	@JoinColumn(name = "userId") // userId는 만들 칼럼이름, PK키를 따라감
 	private User user; // DB는 오브젝트 저장불가, FK,자바는 오브젝트를 저장가능
-	
+
 	@CreationTimestamp
 	private Timestamp createDate;
 }
