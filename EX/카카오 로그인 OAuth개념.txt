@@ -1,0 +1,57 @@
+웹서버 주소 
+http://localhost:8000
+
+클라이언트 API 키 
+4153c1b0562961bcf1dd83a356c40c89
+
+Redirect URI
+http://localhost:8000/auth/kakao/callback
+
+카카오 로그인 서비스 개발 테스트 
+
+카카오 동의 구성
+user 오브젝트 : id(번호),username, password, email
+카카오로부터 받을 정보 : profile정보(필수), email(선택)
+
+로그인 요청 주소 <GET>
+https://kauth.kakao.com/oauth/authorize
+?client_id=4153c1b0562961bcf1dd83a356c40c89
+&redirect_uri=http://localhost:8000/auth/kakao/callback
+&response_type=code HTTP/1.1
+
+토큰 발급 요청 주소 <POST> - http body에 데이터 전달<4가지 데이터 담기>
+헤더값 : application/x-www-form-urlencoded;charset=utf-8 <key=value>
+요청 주소 : https://kauth.kakao.com/oauth/token
+바디 값<전달 항목>
+grant_type=authorization_code
+client_id=4153c1b0562961bcf1dd83a356c40c89
+redirect_uri=http://localhost:8000/auth/kakao/callback
+code={동적}
+
+토큰을 통한 사용자 조회
+요청 주소: https://kapi.kakao.com/v2/user/me
+헤더 값
+Authorization: Bearer {ACCESS_TOKEN}
+Content-type: application/x-www-form-urlencoded;charset=utf-8
+
+
+
+------------------------------
+* 카카오 로그인 OAuth 개념
+- Open Auth -- 인증처리를 대신 해준다
+개인정보를 효율적으로 관리할때 한곳에서 관리(naver, kakao)
+
+인증처리 완료 == CallBack-code: 를 받음
+카카오 로그인에 성공하면 Access Token<DB접근권한>을 부여받음
+
+리소스 오너 == 로그인에 접근하는 유저
+웹 서버 == 클라이언트
+카카오 API 서버 == OAuth 인증 서버 
+자원 서버 == 리소스 서버
+
+스프링에서 google, facebook은 기본 라이브러리 제공 OAuth-client
+
+
+
+
+

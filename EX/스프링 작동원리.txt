@@ -1,0 +1,20 @@
+톰켓시작 - 필터 - 디스패처(주소확인 요청) - controller(요청이오면 활성화) - service(요청이오면 활성화) - 
+jpa repository(요청이오면 활성화) - 영속성 컨덱스트(요청이오면 활성화) - dataSource(미리 활성화) - DB
+
+user정보가 있으면 session에 기록
+view Resolver - 페이지를 만들어서 작동<controller -return ""일때, restController는 데이터를 리턴해서 작동안함>
+인터셉터 - 함수 실행전 또는 실행후에 정보의 권한체크<필터는 요청을 걸러내는 역할>
+영속성컨텍스트 - 필요한 디비의 정보를 보관하는 역할
+
+
+
+**사용자가 로그인 요청(request == 주소) - http://~~/login (post) <body: username, password> 
+- 디스패처 확인 - controller<username, password 받음> - service<login 요청> 
+- jpa repository<select 위임, DB에 있는지 실행> - 영속성 컨텍스트<user오브젝트 존재여부> 
+- darasourse<DB에 질의> - DB<유저 정보 보내기> 
+
+**회원가입 insert
+controller<회원가입 요청, 해당 데이터받기, jdbc연결> - service<트랜젝션 실행> - JPA reporitory<insert 실행> - 영속성컨텍스트 - DB<insert 실행> --- service<controller로 넘기고 종료되면서 트랜잭션도 종료 DB에는 commit요청>
+
+**송금요청
+controller<송금데이터(보내는이, 받는이, 금액) 받기> - service<보내는이 update 요청, 받는이 update 요청/ 둘 중 하나 실패시 롤백> - JPA controller<보내는이, 받는이 update db에 실행> - 영속성 컨텍스트<해당 user데이터를 가지고 있으면 update> - DB<없으면 여기서 실행> 

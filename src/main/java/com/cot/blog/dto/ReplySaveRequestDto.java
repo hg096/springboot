@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder 
-public class ResponseDto<T> {
 
-	int status;
-	T data;
+public class ReplySaveRequestDto {
+	private int userId;
+	private int boardId;
+	private String content;
+	
 }

@@ -33,10 +33,17 @@ spring:
       # 테이블 생성시 변수명 그대로 필드 생성
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false # false 를 둠으로써 JPA 넘버링 방식을 따르지 않음
-    show-sql: true # sql 생성로그 출력
+    # show-sql: true # sql 생성로그 출력
     properties:
       hibernate.format_sql: true # sql 생성로그 이쁘게 정렬
 
   jackson:
     serialization:
       fail-on-empty-beans: false
+      
+      
+
+
+
+cot:
+  key: cot1234          
